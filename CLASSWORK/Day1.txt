@@ -1,0 +1,12 @@
+
+use SchoolLibrary
+
+db.books.insert({title : "Introduction to Science", author : "Dr.Smith", available: true})
+
+show collections
+
+books
+
+db.books.drop()
+
+db.dropDatabase()
