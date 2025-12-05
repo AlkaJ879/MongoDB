@@ -5,8 +5,6 @@ db.books.insert({title : "Introduction to Science", author : "Dr.Smith", availab
 
 show collections
 
-books
-
 db.books.drop()
 
 db.dropDatabase()

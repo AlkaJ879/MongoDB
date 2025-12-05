@@ -4,8 +4,6 @@ db.orders.insert({customerName : "Alice Johnson", item : "Chocolate cake", quant
 
 show collections
 
-orders
-
 db.orders.drop()
 
 db.dropDatabase()
