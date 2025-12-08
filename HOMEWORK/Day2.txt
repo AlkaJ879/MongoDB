@@ -1,0 +1,39 @@
+**Create a new database called CompanyDB**
+
+     use CompanyDB
+
+**Create a collection named Employees.
+Insert one employee record using insertOne() with the following details:
+name: "Ravi Kumar"
+age: 28
+isActive: true
+salary: 45000.50
+skills: ["JavaScript", "Node.js", "MongoDB"]
+contact: an object with email: "ravi@example.com" and phone: "9876543210"
+joinedDate: today’s date
+managerAssigned: null**
+
+     db.Employees.insertOne({name: "Ravi Kumar",
+     age: 28,
+     isActive: true,
+     salary: 45000.50,
+     skills: ["JavaScript", "Node.js", "MongoDB"], contact: [{email:"ravi@example.com"}, {phone: 9876543210}], joinedDate : Date(), managerAssigned : null })
+
+**Insert three more employee records at once using insertMany() with sample data of your choice** 
+
+     db.Employees.insertMany([{name: "Ramesh Kumar",
+     age: 29,
+     isActive: true,
+     salary: 40000,
+     skills: ["JavaScript", "Node.js"], contact: [{email:"ramesh@example.com"}, {phone: 9878843210}], joinedDate : Date(), managerAssigned : null },{name: "Joseph Morgan",
+     age: 28,
+     isActive: true,
+     salary: 45500,
+     skills: ["JavaScript", "Node.js", "MongoDB", "MySQL"], contact: [{email:"joseph@example.com"}, {phone: 9886543210}], joinedDate : Date(), managerAssigned : null },{name: "Suresh Kumar",
+     age: 31,
+     isActive: false,
+     salary: 30000,
+     skills: ["JavaScript", "Node.js", "MongoDB"], contact: [{email:"suresh@example.com"}, {phone: 9876543254}], joinedDate : Date(), managerAssigned : null }])
+
+
+
