@@ -1,37 +1,32 @@
+**Create a new database called EventTracker**
 
-use store
+    use EventTracker
 
-**Insert sample data**
+**Inside it, create a collection named UpcomingEvents.
+Insert one event document using insertOne() with the following data:
+name: "Music Fest" (text)
+date: use the current date
+isFreeEntry: false
+ticketPrice: 299.99
+performers: ["DJ Max", "Live Band"]
+location: an object with city: "Chennai" and venue: "Beach Arena"
+specialCode: null**
 
-db.Products.insertMany([
-    { productName: "Galaxy S21", category: "Smartphones", price: 799.99, stock: 10, discountAvailable: true },
-    { productName: "iPhone 13", category: "Smartphones", price: 999.99, stock: 8, discountAvailable: false },
-    { productName: "Dell XPS 13", category: "Laptops", price: 1299.99, stock: 6, discountAvailable: true },
-    { productName: "HP Spectre x360", category: "Laptops", price: 1499.99, stock: 3, discountAvailable: false },
-    { productName: "Sony Headphones", category: "Accessories", price: 199.99, stock: 15, discountAvailable: true },
-    { productName: "Logitech Mouse", category: "Accessories", price: 49.99, stock: 20, discountAvailable: true },
-    { productName: "MacBook Air", category: "Laptops", price: 999.99, stock: 7, discountAvailable: true },
-    { productName: "Samsung Tablet", category: "Tablets", price: 299.99, stock: 12, discountAvailable: false },
-    { productName: "Smart Watch", category: "Wearables", price: 249.99, stock: 5, discountAvailable: true },
-    { productName: "Gaming Monitor", category: "Monitors", price: 399.99, stock: 4, discountAvailable: false }
-])
+    db.UpcomingEvents.insertOne({"name": "Music Fest",
+    date: Date(),
+    isFreeEntry: false,
+    ticketPrice: 299.99,
+    performers: ["DJ Max", "Live Band"],
+    location: [{city:"chennai"},{venue:"Beach Arena"}],specialCode:null})
 
-**Find and neatly display all products with a price less than 1000.**
+**Insert two more events at once using insertMany()**
 
-db.Products.find({"price" : {$lt:1000}})
+    db.UpcomingEvents.insertMany([{name: "Dance Fest", date : Date(), isFreeEntry : true, ticketPrice: 400, performers: ["DJ Sekhar", "Sreenath Bhasi"], location : [{city : "Bangalore"}, {venue : "Arena"}], specialCode : null}, {name: "Music&Dance Fest", date : Date(), isFreeEntry : false, ticketPrice: 500, performers: ["DJ Max", "DJ Sekhar"], location : [{city : "Trivandrum"}, {venue : "Arena Square"}], specialCode : null}])
 
-**Find one product whose category is "Smartphones"**
+**Use show collections to check the collection**
 
-db.Products.findOne({category : "Smartphones"})
+    show collections
 
-**Find all products that are in the "Laptops" category and have a stock greater than or equal to 5.**
+**Use db.UpcomingEvents.find() to display all event documents**
 
-db.Products.find({$and : [{category:"Laptops"}, {stock :{$gte :5}}]})
-
-**Find all products where the price is either less than 300 OR the discount is available.**
-
-db.Products.find({$or :[{price:{$lt : 300}}, {discountAvailable : true}]})
-
-**Find products whose price is NOT equal to 1500.**
-
-db.Products.find({price : {$ne : 1500}})
+    db.UpcomingEvents.find()

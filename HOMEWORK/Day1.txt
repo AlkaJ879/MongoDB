@@ -1,9 +1,0 @@
-use BakeryShop
-
-db.orders.insert({customerName : "Alice Johnson", item : "Chocolate cake", quantity: 2 , totalPrice : 500})
-
-show collections
-
-db.orders.drop()
-
-db.dropDatabase()

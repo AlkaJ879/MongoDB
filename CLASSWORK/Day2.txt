@@ -1,32 +1,10 @@
-**Create a new database called EventTracker**
 
-    use EventTracker
+use SchoolLibrary
 
-**Inside it, create a collection named UpcomingEvents.
-Insert one event document using insertOne() with the following data:
-name: "Music Fest" (text)
-date: use the current date
-isFreeEntry: false
-ticketPrice: 299.99
-performers: ["DJ Max", "Live Band"]
-location: an object with city: "Chennai" and venue: "Beach Arena"
-specialCode: null**
+db.books.insert({title : "Introduction to Science", author : "Dr.Smith", available: true})
 
-    db.UpcomingEvents.insertOne({"name": "Music Fest",
-    date: Date(),
-    isFreeEntry: false,
-    ticketPrice: 299.99,
-    performers: ["DJ Max", "Live Band"],
-    location: [{city:"chennai"},{venue:"Beach Arena"}],specialCode:null})
+show collections
 
-**Insert two more events at once using insertMany()**
+db.books.drop()
 
-    db.UpcomingEvents.insertMany([{name: "Dance Fest", date : Date(), isFreeEntry : true, ticketPrice: 400, performers: ["DJ Sekhar", "Sreenath Bhasi"], location : [{city : "Bangalore"}, {venue : "Arena"}], specialCode : null}, {name: "Music&Dance Fest", date : Date(), isFreeEntry : false, ticketPrice: 500, performers: ["DJ Max", "DJ Sekhar"], location : [{city : "Trivandrum"}, {venue : "Arena Square"}], specialCode : null}])
-
-**Use show collections to check the collection**
-
-    show collections
-
-**Use db.UpcomingEvents.find() to display all event documents**
-
-    db.UpcomingEvents.find()
+db.dropDatabase()

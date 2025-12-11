@@ -1,38 +1,39 @@
-**Use a database named BookStoreDB and a collection named Books**
+**Create a new database called CompanyDB**
 
-use BookStoreDB
+     use CompanyDB
 
-**Insert sample data**
+**Create a collection named Employees.
+Insert one employee record using insertOne() with the following details:
+name: "Ravi Kumar"
+age: 28
+isActive: true
+salary: 45000.50
+skills: ["JavaScript", "Node.js", "MongoDB"]
+contact: an object with email: "ravi@example.com" and phone: "9876543210"
+joinedDate: today’s date
+managerAssigned: null**
 
-db.Books.insertMany([
-    { title: "Harry Potter and the Philosopher's Stone", author: "J.K. Rowling", price: 399.99, year: 1997, available: true },
-    { title: "The Hobbit", author: "J.R.R. Tolkien", price: 299.99, year: 1937, available: true },
-    { title: "The Da Vinci Code", author: "Dan Brown", price: 499.99, year: 2003, available: false },
-    { title: "A Game of Thrones", author: "George R.R. Martin", price: 599.99, year: 1996, available: true },
-    { title: "The Girl on the Train", author: "Paula Hawkins", price: 349.99, year: 2015, available: true },
-    { title: "Becoming", author: "Michelle Obama", price: 449.99, year: 2018, available: true },
-    { title: "The Catcher in the Rye", author: "J.D. Salinger", price: 199.99, year: 1951, available: false },
-    { title: "The Night Circus", author: "Erin Morgenstern", price: 299.99, year: 2011, available: true },
-    { title: "1984", author: "George Orwell", price: 249.99, year: 1949, available: true },
-    { title: "Educated", author: "Tara Westover", price: 399.99, year: 2018, available: false }
-])
+     db.Employees.insertOne({name: "Ravi Kumar",
+     age: 28,
+     isActive: true,
+     salary: 45000.50,
+     skills: ["JavaScript", "Node.js", "MongoDB"], contact: [{email:"ravi@example.com"}, {phone: 9876543210}], joinedDate : Date(), managerAssigned : null })
 
-** Find and display all books priced less than 500, formatted neatly.**
+**Insert three more employee records at once using insertMany() with sample data of your choice** 
 
-db.Books.find ({price : {$lt :500}})
+     db.Employees.insertMany([{name: "Ramesh Kumar",
+     age: 29,
+     isActive: true,
+     salary: 40000,
+     skills: ["JavaScript", "Node.js"], contact: [{email:"ramesh@example.com"}, {phone: 9878843210}], joinedDate : Date(), managerAssigned : null },{name: "Joseph Morgan",
+     age: 28,
+     isActive: true,
+     salary: 45500,
+     skills: ["JavaScript", "Node.js", "MongoDB", "MySQL"], contact: [{email:"joseph@example.com"}, {phone: 9886543210}], joinedDate : Date(), managerAssigned : null },{name: "Suresh Kumar",
+     age: 31,
+     isActive: false,
+     salary: 30000,
+     skills: ["JavaScript", "Node.js", "MongoDB"], contact: [{email:"suresh@example.com"}, {phone: 9876543254}], joinedDate : Date(), managerAssigned : null }])
 
-**Find one book written by "J.K. Rowling"**
 
-db.Books.findOne({author : "J.K. Rowling"})
 
-**Find and display books published after the year 2010 AND priced greater than or equal to 300.**
-
-db.Books.find({$and : [{year :{$gt:2010}}, {price : {$gte : 300}}]})
-
-** Find books that are either priced less than 200 OR are not available.**
-
-db.Books.find({$or : [{available : false}, {price: {$lte :200}}]})
-
-**Find books whose price is NOT equal to 450.**
-
-db.Books.find({price:{$ne :450}})
